@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 
 export default class Player extends React.Component{
 
+
+  renderXButton(){
+    return(
+        <button className="button button--round" onClick={() => {Players.remove(this.props.player._id);}}>x</button>
+    );
+  }
+
   render(){
 
     let itemClassName = `item item--position-${this.props.player.rank}`;
@@ -20,7 +27,7 @@ export default class Player extends React.Component{
           <div className="player__actions">
             <button className="button button--round" onClick={() => {Players.update(this.props.player._id, {$inc: {score: 1}});}}>+1</button>
             <button className="button button--round" onClick={() => {Players.update(this.props.player._id, {$inc: {score: -1}});}}>-1</button>
-            <button className="button button--round" onClick={() => {Players.remove(this.props.player._id);}}>x</button>
+            {this.renderXButton()}
           </div>
         </div>
       </div>
